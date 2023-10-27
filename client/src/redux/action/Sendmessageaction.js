@@ -10,7 +10,10 @@ import {
 const url = process.env.REACT_APP_URL;
 export const Sendnewmessage = (data) => async (dispatch) => {
   try {
-    const response = await axios.post(url + "messages/add", data);
+    const token = localStorage.getItem('token')
+    const response = await axios.post(url + "messages/add", data, {
+      headers: {" Authorization": `bearer ${token}` },
+    });
     dispatch({ type: SEND_MESSAGE, payload: response.data });
   } catch (error) {
     dispatch({ type: FAILUER, payload: error });
@@ -19,7 +22,10 @@ export const Sendnewmessage = (data) => async (dispatch) => {
 
 export const Getmessage = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(url + "messages/get/" + id);
+    const token = localStorage.getItem('token')
+    const response = await axios.get(url + "messages/get/" + id, {
+      headers: { "Authorization": `bearer ${token}` },
+    });
     dispatch({ type: GET_MESSAGE, payload: response.data });
   } catch (error) {
     dispatch({ type: FAILUER, payload: error });
@@ -28,7 +34,10 @@ export const Getmessage = (id) => async (dispatch) => {
 
 export const Uploadfile = (file) => async (dispatch) => {
   try {
-    const response = await axios.post(url + "file/upload", file);
+    const token = localStorage.getItem('token')
+    const response = await axios.post(url + "file/upload", file, {
+      headers: { "Authorization": `bearer ${token}` },
+    });
     dispatch({ type: SEND_FILE, payload: response.data });
   } catch (error) {
     dispatch({ type: FAILUER, payload: error });

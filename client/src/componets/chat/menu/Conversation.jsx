@@ -59,8 +59,7 @@ const Conversation = ({ users }) => {
   const { message } = useSelector((state) => state.Convrastionreducer);
   useEffect(() => {
     setlatestMessage({ text: message?.message, timestamp: message?.updatedAt });
-    console.log("latestmessage", latestmessage);
-  }, [newmessageFlag]);
+  }, [ newmessageFlag]);
 
   return (
     <>

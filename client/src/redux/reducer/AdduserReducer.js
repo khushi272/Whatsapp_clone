@@ -4,6 +4,7 @@ import { ADD_USER, FAILUER, GET_USER, SEARCH_USER } from "../constant";
 export const AddReducer = (state = initialvalue, action) => {
   switch (action.type) {
     case ADD_USER:
+      localStorage.setItem("token",action.payload.token)
       return {
         ...state,
         data: action.payload,

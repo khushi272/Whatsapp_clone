@@ -16,7 +16,6 @@ export const Convrastionreducer = (state = initialvalue, action) => {
         error: action.payload,
       };
     case MESSAGE:
-      console.log("conv reducer",action.payload);
       return {
         ...state,
         message: action.payload,

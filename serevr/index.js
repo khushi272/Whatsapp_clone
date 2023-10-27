@@ -1,5 +1,6 @@
 import express from 'express';
 import connection from './datatabse/db.js';
+import jwt from "jsonwebtoken";
 import Route from './router/route.js';
 import cors from "cors";
 import bodyParser from 'body-parser';

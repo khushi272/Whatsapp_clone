@@ -13,7 +13,7 @@ const addUser = (userData, socketId) => {
     users.push({ ...userData, socketId });
   }
 };
-const getUser = (userId) => {
+const getUser = (userId) =>  {
   console.log("userid", userId);
   return users.find((user) => user.sub === userId);
 };
@@ -27,7 +27,10 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sendMessage", (data) => {
+    console.log("reciverid",data.receiverId);
     const user = getUser(data.receiverId);
+    console.log("user",user);
+    // io.to(user.socketId).emit('getMessage', data)
     if (user) {
       const userSocketId = user.socketId;
       console.log("usersocketid",userSocketId);

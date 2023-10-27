@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema({
     aud: {
         type: String,
-        required: true
+        required: false
     },
     azp: {
         type: String,
